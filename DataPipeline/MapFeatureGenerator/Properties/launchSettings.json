@@ -1,0 +1,11 @@
+﻿{
+  "$schema": "http://json.schemastore.org/launchsettings.json",
+  "profiles": {
+    "MapFeatureGenerator": {
+      "commandName": "Project",
+      "commandLineArgs": "-i \"Tests/TestOSMDataReader/MapData/andorra-10032022.osm.pbf\" -o \"DataPipeline/MapFeatureGenerator/MapData/andorra.bin\"",
+      "environmentVariables": {
+      }
+    }
+  }
+}
