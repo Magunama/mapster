@@ -65,23 +65,19 @@ public static class Program
             Ways = ways.ToImmutableArray()
         };
     }
-    
+
     private static void UpdateKeysValues(ICollection<ushort> values, string key, string value)
     {
-        PropEnum propEnum;
+        // convert key-value combination to enum
         var s = Join(Empty, new string[] {key.Substring(0, 1), value});
+        var ok = Enum.TryParse(s, true, out PropEnum propEnum) || Enum.TryParse(key, true, out propEnum);
 
-        var ok = Enum.TryParse(s, true, out propEnum);
-        if (!ok)
-        {
-            ok = Enum.TryParse(key, true, out propEnum);
-        }
-        
+        // discard values we are not interested in
         if (!ok)
         {
             return;
         }
-        
+
         values.Add((ushort) propEnum);
     }
 

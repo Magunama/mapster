@@ -16,7 +16,7 @@ public static class TileRenderer
 
         var isPopulatedPlace = false;
         var isBorder = false;
-        
+
         foreach (var p in feature.Properties)
         {
             if (p is >= (ushort) PropEnum.HMOTORWAY and <= (ushort) PropEnum.HROAD)

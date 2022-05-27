@@ -108,6 +108,7 @@ public enum GeometryType : byte
 
 public enum PropEnum : ushort
 {
+    // highway group
     HMOTORWAY = 100,
     HTRUNK,
     HPRIMARY,
@@ -119,11 +120,13 @@ public enum PropEnum : ushort
 
     WATER = 200,
 
+    // boundary group
     BADMINISTRATIVE = 300,
     BFOREST = 310,
 
     A2 = 400, // admin level 2
 
+    // populated group
     PCITY = 500,
     PTOWN,
     PLOCALITY,
@@ -131,6 +134,7 @@ public enum PropEnum : ushort
 
     RAILWAY = 600,
 
+    // natural group
     NFELL = 700,
     NGRASSLAND,
     NHEATH,
@@ -146,6 +150,7 @@ public enum PropEnum : ushort
     NSAND,
     NWATER = 740,
 
+    // landuse group
     LFOREST = 800,
     LORCHARD,
     LRESIDENTIAL = 810,
@@ -174,7 +179,8 @@ public enum PropEnum : ushort
     LEISURE = 1000,
 
     AMENITY = 1100,
-    
+
+    // allowed name as a value for using labels
     NAME = 1200
 }
 

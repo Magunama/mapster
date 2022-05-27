@@ -185,7 +185,9 @@ public unsafe class DataFile : IDisposable
                         GetProperty(header.Tile.Value.StringsOffsetInBytes, header.Tile.Value.CharactersOffsetInBytes,
                             p + feature->PropertiesOffset, out var value);
 
+                        // convert char sequence value to actual ushort
                         ushort.TryParse(value, out var v);
+
                         properties.Add(v);
                     }
 

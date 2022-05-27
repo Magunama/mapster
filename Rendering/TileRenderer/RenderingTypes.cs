@@ -110,25 +110,25 @@ public struct GeoFeature : BaseShape
         IsPolygon = feature.Type == GeometryType.Polygon;
         Type = GeoFeatureType.Unknown;
 
-        if (property is >= (ushort) PropEnum.NFELL and <= (ushort) PropEnum.NWETLAND)
+        switch (property)
         {
-            Type = GeoFeatureType.Plain;
-        }
-        else if (property.Equals((ushort) PropEnum.NWOOD) || property.Equals((ushort) PropEnum.NTREE_ROW))
-        {
-            Type = GeoFeatureType.Forest;
-        }
-        else if (property is >= (ushort) PropEnum.NBARE_ROCK and <= (ushort) PropEnum.NSCREE)
-        {
-            Type = GeoFeatureType.Mountains;
-        }
-        else if (property.Equals((ushort) PropEnum.NBEACH) || property.Equals((ushort) PropEnum.NSAND))
-        {
-            Type = GeoFeatureType.Desert;
-        }
-        else if (property.Equals((ushort) PropEnum.NWATER))
-        {
-            Type = GeoFeatureType.Water;
+            case >= (ushort) PropEnum.NFELL and <= (ushort) PropEnum.NWETLAND:
+                Type = GeoFeatureType.Plain;
+                break;
+            case (ushort) PropEnum.NWOOD:
+            case (ushort) PropEnum.NTREE_ROW:
+                Type = GeoFeatureType.Forest;
+                break;
+            case >= (ushort) PropEnum.NBARE_ROCK and <= (ushort) PropEnum.NSCREE:
+                Type = GeoFeatureType.Mountains;
+                break;
+            case (ushort) PropEnum.NBEACH:
+            case (ushort) PropEnum.NSAND:
+                Type = GeoFeatureType.Desert;
+                break;
+            case (ushort) PropEnum.NWATER:
+                Type = GeoFeatureType.Water;
+                break;
         }
 
         ScreenCoordinates = new PointF[c.Length];
@@ -246,23 +246,23 @@ public struct Border : BaseShape
 
         foreach (var p in feature.Properties)
         {
-            if (p.Equals((ushort) PropEnum.BADMINISTRATIVE))
+            switch (p)
             {
-                foundBoundary = true;
-            }
-
-            if (p.Equals((ushort) PropEnum.A2))
-            {
-                foundLevel = true;
+                case (ushort) PropEnum.BADMINISTRATIVE:
+                    foundBoundary = true;
+                    break;
+                case (ushort) PropEnum.A2:
+                    foundLevel = true;
+                    break;
             }
 
             if (foundBoundary && foundLevel)
             {
-                break;
+                return true;
             }
         }
 
-        return foundBoundary && foundLevel;
+        return false;
     }
 }
 

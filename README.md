@@ -1,3 +1,18 @@
+### Personal contribution
+ - moved decision-making at preprocess time by replacing strings in the .bin file with ushort based enums;
+ - created enum class with custom numbers to tell groups apart just by looking at the ushort value;
+ - converted strings to enums using TryParse which is (seemingly) performant as values are cached;
+ - allowed irrelevant features to be discarded at preprocess time;
+ - reduced considerably the number of times needed to go through a feature's properties to draw something on the screen;
+ - reduced memory footprint for feature properties by storing them in a hashset.
+
+#### Future improvements
+- maybe reorganize enum values to fit in a smaller numeric type (e.g. byte);
+- decrease .bin file size by writing ushort to file as number instead of a char sequence;
+- group features in a better way;
+- convert key-value pair to enum via a dictionary if performance is better.
+--------
+
 Mapster
 -----------------------
 The solution in this repository contains several projects that aim to read and extract information from the OpenStreeMap binary [`osm.pbf`](https://wiki.openstreetmap.org/wiki/PBF_Format) format, as well as interpret and present this data in a user-facing way.
